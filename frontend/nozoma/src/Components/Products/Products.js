@@ -93,9 +93,9 @@ const Products = () => {
               <p>{product.title}</p>
               <p>{product.price}</p>
               <p>{product.productType}</p>
-              <button onClick={() => handleProductDetails(product)}>Voir l'Annonce</button>
               {userId === product.author._id && (
                 <>
+                  <button onClick={() => handleProductDetails(product)}>Voir l'Annonce</button>
                   <button onClick={() => handleProductUpdate(product)}>Modifier</button>
                   <DeleteProducts productId={product._id} onDelete={handleDelete} />
                 </>
