@@ -15,9 +15,7 @@ const Users = () => {
         if (token) {
             try {
                 const decodedToken = jwtDecode(token);
-                console.log("decodedToken", decodedToken);
                 setUserId(decodedToken.id);
-                console.log("userId", decodedToken.id);
             } catch (error) {
                 console.error("Erreur lors de la lecture du token :", error);
             }

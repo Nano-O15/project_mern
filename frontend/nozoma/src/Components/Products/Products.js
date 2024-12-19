@@ -2,27 +2,44 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import DeleteProducts from "../Products/DeleteProducts";
+import { jwtDecode } from "jwt-decode";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [productType, setProductType] = useState('');
+  const [userId, setUserId] = useState(null);
   const navigate = useNavigate();
 
   const categories = ['Console', 'Jeux-Vidéo', 'Électronique', 'Véhicule', 'Immobilier'];
 
   useEffect(() => {
-      axios
-        .get("http://localhost:8080/products", {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        })
-        .then((response) => {
-          setProducts(response.data);
-        })
-        .catch((error) => {
-          console.error("Erreur lors de la récupération des annonces :", error);
-        });
+    const token = localStorage.getItem("token");
+    console.log("token", token);
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        setUserId(decodedToken.id);
+      } catch (error) {
+        console.error("Erreur lors de la lecture du token :", error);
+      }
+    } else {
+      console.error("Token non trouvé !");
+    }
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/products", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        setProducts(response.data);
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la récupération des annonces :", error);
+      });
   }, []);
 
   useEffect(() => {
@@ -32,7 +49,7 @@ const Products = () => {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
-          params: { productType }, 
+          params: { productType },
         });
         setProducts(response.data);
       } catch (error) {
@@ -77,8 +94,12 @@ const Products = () => {
               <p>{product.price}</p>
               <p>{product.productType}</p>
               <button onClick={() => handleProductDetails(product)}>Voir l'Annonce</button>
-              <button onClick={() => handleProductUpdate(product)}>Modifier</button>
-              <DeleteProducts productId={product._id} onDelete={handleDelete} />
+              {userId === product.author._id && (
+                <>
+                  <button onClick={() => handleProductUpdate(product)}>Modifier</button>
+                  <DeleteProducts productId={product._id} onDelete={handleDelete} />
+                </>
+              )}
             </li>
           ))
         ) : (
