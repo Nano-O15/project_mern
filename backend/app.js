@@ -8,7 +8,7 @@ const cors = require("cors");
 app.use(cors({ origin: "http://localhost:3000" }));
 
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/tp_mern", {});
+mongoose.connect("mongodb://localhost:27017/project_mern", {});
 
 console.log("Connected to MongoDB");
 
