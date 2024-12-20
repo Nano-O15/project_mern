@@ -4,15 +4,15 @@ import { useNavigate } from "react-router-dom";
 import DeleteProducts from "./DeleteProducts";
 import {jwtDecode} from "jwt-decode"; // Corrige l'importation de jwtDecode
 import "./Products.css";
-
+ 
 const Products = () => {
     const [products, setProducts] = useState([]);
     const [productType, setProductType] = useState('');
     const [userId, setUserId] = useState(null);
     const navigate = useNavigate();
-
+ 
     const categories = ['Console', 'Jeux-Vidéo', 'Électronique', 'Véhicule', 'Immobilier'];
-
+ 
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
@@ -24,7 +24,7 @@ const Products = () => {
             }
         }
     }, []);
-
+ 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
@@ -39,12 +39,12 @@ const Products = () => {
         };
         fetchProducts();
     }, [productType]);
-
+ 
     const navigateToProduct = () => navigate("/product");
     const handleProductDetails = (product) => navigate(`/product/${product._id}`);
     const handleProductUpdate = (product) => navigate(`/product_update/${product._id}`);
     const handleDelete = (productId) => setProducts(products.filter((product) => product._id !== productId));
-
+ 
     return (
         <div className="products-container">
             <h1>Liste des Annonces</h1>
@@ -73,7 +73,7 @@ const Products = () => {
 ) : (
     <p className="no-products-message">Aucun produit trouvé dans cette catégorie.</p>
 )}
-
+ 
             </ul>
             <div className="action-buttons">
                 <button onClick={navigateToProduct}>Ajouter une Annonce</button>
@@ -82,5 +82,7 @@ const Products = () => {
         </div>
     );
 };
-
+ 
 export default Products;
+ 
+ 
