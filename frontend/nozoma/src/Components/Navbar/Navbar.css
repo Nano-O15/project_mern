@@ -44,6 +44,30 @@
     background-color: #e65c00;
   }
   
+  /* Bouton de déconnexion */
+  .logout-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .logout-button:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+  }
+
+  .logout-button span {
+    font-size: 14px;
+  }
+  
   /* Barre de recherche */
   .navbar-search {
     flex-grow: 1;
@@ -259,6 +283,10 @@
     }
     
     .icon-button span {
+      display: none;
+    }
+
+    .logout-button span {
       display: none;
     }
   }

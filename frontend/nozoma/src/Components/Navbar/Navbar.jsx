@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
-import { IoMdContact, IoMdAddCircle, IoMdSearch } from "react-icons/io";
+import { IoMdContact, IoMdAddCircle, IoMdSearch, IoMdLogOut } from "react-icons/io";
 import { FaHeart, FaRegBell } from "react-icons/fa";
 
 const Navbar = () => {
@@ -11,6 +11,9 @@ const Navbar = () => {
   useEffect(() => {
     const storedAuthor = localStorage.getItem('author');
     const storedRole = localStorage.getItem('role');
+    
+    console.log('Author:', storedAuthor);
+    console.log('Role:', storedRole);
     
     if(storedRole) {
       setRole(storedRole);
@@ -24,6 +27,7 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem('author');
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     setAuthor('');
     setRole('');
     window.location.href = '/connexion';
@@ -67,7 +71,7 @@ const Navbar = () => {
               <div className="auth-buttons">
                 <a href="/connexion" className="login-button">Se connecter</a>
                 <a href="/inscription" className="register-button">S'inscrire</a>
-                <a href='/alluser' className="register-button">Voir user</a>
+                <a href='/users' className="register-button">Voir user</a>
               </div>
             ) : (
               <div className="user-menu">
@@ -79,19 +83,15 @@ const Navbar = () => {
                   <FaRegBell />
                   <span>Messages</span>
                 </a>
-                <a href="/alluser" className='icon-button'>All User</a>
+                <a href="/users" className='icon-button'>All User</a>
+                <button onClick={handleLogout} className="logout-button">
+                  <IoMdLogOut size={22} />
+                  <span>Déconnexion</span>
+                </button>
                 <div className="user-profile">
                   <IoMdContact size={22} />
                   <span className="user-name">{author}</span>
                   {role && <span className="role-badge">{formattedRole}</span>}
-                  <div className="user-dropdown">
-                    <ul>
-                      <li><a href="/mes-annonces">Mes annonces</a></li>
-                      <li><a href="/messages">Messages</a></li>
-                      <li><a href="/parametres">Paramètres</a></li>
-                      <li><button onClick={handleLogout}>Se déconnecter</button></li>
-                    </ul>
-                  </div>
                 </div>
               </div>
             )}
