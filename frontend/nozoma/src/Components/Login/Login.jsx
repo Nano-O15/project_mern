@@ -1,13 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import "../Login/Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -20,9 +18,6 @@ const Login = () => {
         const token = response.data.token;
         const decodedToken = jwtDecode(token);
         
-        console.log('Token décodé:', decodedToken);
-        
-        // Stockage des informations
         localStorage.setItem("token", token);
         localStorage.setItem("author", decodedToken.email.split('@')[0]);
         localStorage.setItem("role", "user");

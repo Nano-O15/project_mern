@@ -10,6 +10,7 @@ import EditProducts from "./Components/Products/EditProducts";
 import ProductDetails from "./Components/Products/ProductDetails";
 import Wrapper from "../src/Components/Wraper/Wraper";
 import Home from "../src/Components/Home/Home";
+import UserProducts from "./Components/Users/UserProducts";
 
 
 function App() {

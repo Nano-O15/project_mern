@@ -12,11 +12,9 @@ const AddProducts = () => {
     const [imageUrl, setImageUrl] = useState("");
     const navigate = useNavigate();
 
-    // Liste des catégories prédéfinies
     const categories = ['Console', 'Jeux-Vidéo', 'Électronique', 'Véhicule', 'Immobilier'];
     
-    // Liste des conditions prédéfinies
-    const conditions = ['Neuf', 'Très bon état', 'Bon état', 'État moyen', 'À rénover'];
+    const conditions = ['Neuf', 'Très bon état', 'Bon état', 'État moyen', 'Pour pièces'];
 
     const handleSubmit = (e) => {
         e.preventDefault();

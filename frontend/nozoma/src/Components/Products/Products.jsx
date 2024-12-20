@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import DeleteProducts from "./DeleteProducts";
-import {jwtDecode} from "jwt-decode"; // Corrige l'importation de jwtDecode
+import {jwtDecode} from "jwt-decode";
 import "./Products.css";
  
 const Products = () => {
@@ -56,24 +56,34 @@ const Products = () => {
             </select>
             <ul className="products-list">
             {products.length > 0 ? (
-    products.map((product) => (
-        <li key={product._id}>
-            <p>{product.title}</p>
-            <p>{product.price} €</p>
-            <p>{product.productType}</p>
-            <button onClick={() => handleProductDetails(product)}>Voir l'Annonce</button>
-            {product.author && userId === product.author._id && (
-                <>
-                    <button onClick={() => handleProductUpdate(product)}>Modifier</button>
-                    <DeleteProducts productId={product._id} onDelete={handleDelete} />
-                </>
+                products.map((product) => (
+                    <li key={product._id} className="product-item">
+                        <div className="product-content">
+                            <div className="product-info">
+                                <h3>{product.title}</h3>
+                                <p className="product-category">{product.productType}</p>
+                                <p className="product-price">{product.price} €</p>
+                                <div className="product-actions">
+                                    <button onClick={() => handleProductDetails(product)}>Voir l'Annonce</button>
+                                    {product.author && userId === product.author._id && (
+                                        <>
+                                            <button onClick={() => handleProductUpdate(product)}>Modifier</button>
+                                            <DeleteProducts productId={product._id} onDelete={handleDelete} />
+                                        </>
+                                    )}
+                                </div>
+                            </div>
+                            {product.imageUrl && (
+                                <div className="product-image">
+                                    <img src={product.imageUrl} alt={product.title} />
+                                </div>
+                            )}
+                        </div>
+                    </li>
+                ))
+            ) : (
+                <p className="no-products-message">Aucun produit trouvé dans cette catégorie.</p>
             )}
-        </li>
-    ))
-) : (
-    <p className="no-products-message">Aucun produit trouvé dans cette catégorie.</p>
-)}
- 
             </ul>
             <div className="action-buttons">
                 <button onClick={navigateToProduct}>Ajouter une Annonce</button>
@@ -84,5 +94,3 @@ const Products = () => {
 };
  
 export default Products;
- 
- 

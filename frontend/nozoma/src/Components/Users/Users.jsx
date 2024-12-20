@@ -59,7 +59,7 @@ const Users = () => {
                     <li key={user._id}>
                         <p><strong>Nom :</strong> {user.name}</p>
                         <p><strong>Email :</strong> {user.email}</p>
-                        <button onClick={() => handleUserId(user)}>Voir les Annonces</button>
+                        <button onClick={() => handleUserId(user)}>Voir ses Annonces</button>
                         {userId === user._id && (
                             <>
                                 <button onClick={() => handleUserUpdate(user)}>Modifier</button>

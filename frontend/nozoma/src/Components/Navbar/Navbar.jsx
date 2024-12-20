@@ -12,9 +12,6 @@ const Navbar = () => {
     const storedAuthor = localStorage.getItem('author');
     const storedRole = localStorage.getItem('role');
     
-    console.log('Author:', storedAuthor);
-    console.log('Role:', storedRole);
-    
     if(storedRole) {
       setRole(storedRole);
     }

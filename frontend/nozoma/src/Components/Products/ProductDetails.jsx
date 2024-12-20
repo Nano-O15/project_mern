@@ -81,6 +81,9 @@ const ProductDetails = () => {
                     <p>
                         <strong>Date de création :</strong> {new Date(product.createdAt).toLocaleString()}
                     </p>
+                    <p>
+                        <img src={product.imageUrl} alt={product.title} className="product-image" />
+                    </p>
                     <button onClick={() => navigate("/products")}>
                         Retour à la liste des produits
                     </button>

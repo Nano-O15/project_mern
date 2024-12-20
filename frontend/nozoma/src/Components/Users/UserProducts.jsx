@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import DeleteProducts from "../Products/DeleteProducts";
 import { jwtDecode } from "jwt-decode";
+import "../Products/Products.css";
 
 const UserProducts = () => {
     const { userId } = useParams();
@@ -30,7 +31,7 @@ const UserProducts = () => {
     useEffect(() => {
         const fetchProductsByAuthor = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/user_products/${userId}`, {
+                const response = await axios.get(`http://localhost:8000/user_products/${userId}`, {
                     headers: {
                         Authorization: "Bearer " + localStorage.getItem("token"),
                     },
@@ -60,9 +61,9 @@ const UserProducts = () => {
     };
 
     return (
-        <div>
+        <div className="products-container">
             <h1>Liste des Annonces de l'Auteur</h1>
-
+    
             <select onChange={(e) => setProductType(e.target.value)} value={productType}>
                 <option value="">Toutes les Catégories</option>
                 {categories.map((cat) => (
@@ -71,32 +72,45 @@ const UserProducts = () => {
                     </option>
                 ))}
             </select>
-
-            <ul>
+    
+            <ul className="products-list">
                 {products.length > 0 ? (
                     products.map((product) => (
-                        <li key={product._id}>
-                            <p>{product.title}</p>
-                            <p>{product.price} €</p>
-                            <p>{product.productType}</p>
-                            <button onClick={() => handleProductDetails(product)}>Voir l'Annonce</button>
-                            {user === product.author && (
-                                <>
-                                    <button onClick={() => handleProductUpdate(product)}>Modifier</button>
-                                    <DeleteProducts productId={product._id} onDelete={handleDelete} />
-                                </>
-                            )}
+                        <li key={product._id} className="product-item">
+                            <div className="product-content">
+                                <div className="product-info">
+                                    <h3>{product.title}</h3>
+                                    <p className="product-category">{product.productType}</p>
+                                    <p className="product-price">{product.price} €</p>
+                                    <div className="product-actions">
+                                        <button onClick={() => handleProductDetails(product)}>Voir l'Annonce</button>
+                                        {user === product.author && (
+                                            <>
+                                                <button onClick={() => handleProductUpdate(product)}>Modifier</button>
+                                                <DeleteProducts productId={product._id} onDelete={handleDelete} />
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+                                {product.imageUrl && (
+                                    <div className="product-image">
+                                        <img src={product.imageUrl} alt={product.title} />
+                                    </div>
+                                )}
+                            </div>
                         </li>
                     ))
                 ) : (
-                    <p>Aucun produit trouvé pour cet utilisateur.</p>
+                    <p className="no-products-message">Aucun produit trouvé pour cet utilisateur.</p>
                 )}
             </ul>
-
-            <button onClick={navigateToProduct}>Ajouter une Annonce</button>
-            <button onClick={() => navigate('/users')}>Voir les Utilisateurs</button>
+    
+            <div className="action-buttons">
+                <button onClick={navigateToProduct}>Ajouter une Annonce</button>
+                <button onClick={() => navigate('/users')}>Voir les Utilisateurs</button>
+            </div>
         </div>
-    );
+    );    
 };
 
 export default UserProducts;
