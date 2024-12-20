@@ -1,0 +1,285 @@
+.navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 12px 0;
+  }
+  
+  .navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  /* Logo et bouton déposer une annonce */
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .navbar-logo img {
+    height: 40px;
+    width: auto;
+  }
+  
+  .post-ad-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #ff6e14;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .post-ad-button:hover {
+    background-color: #e65c00;
+  }
+  
+  /* Barre de recherche */
+  .navbar-search {
+    flex-grow: 1;
+    max-width: 600px;
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+    background-color: #f4f6f7;
+    border-radius: 8px;
+    padding: 8px 16px;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+  
+  .search-container.focused {
+    border-color: #ff6e14;
+    background-color: #fff;
+  }
+  
+  .search-icon {
+    color: #666;
+    margin-right: 8px;
+  }
+  
+  .search-container input {
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 14px;
+  }
+  
+  /* Boutons de connexion */
+  .auth-buttons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  
+  .login-button, .register-button {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+  
+  .login-button {
+    color: #1a1a1a;
+  }
+  
+  .register-button {
+    background-color: #1a1a1a;
+    color: white;
+  }
+  
+  .login-button:hover {
+    background-color: #f4f6f7;
+  }
+  
+  .register-button:hover {
+    background-color: #333;
+  }
+  .delete-button{
+    background-color: red;
+    color: white;
+    border: none;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  
+  /* Menu utilisateur */
+  .user-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .icon-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #666;
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.2s ease;
+  }
+  
+  .icon-button:hover {
+    color: #ff6e14;
+  }
+  
+  .user-profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+  }
+  
+  .user-profile:hover {
+    background-color: #f4f6f7;
+  }
+  
+  .user-name {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .role-badge {
+    background-color: #e5e5e5;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    display: none;
+    z-index: 1000;
+  }
+  
+  .user-profile:hover .user-dropdown {
+    display: block;
+  }
+  
+  .user-dropdown ul {
+    list-style: none;
+    padding: 8px 0;
+    margin: 0;
+  }
+  
+  .user-dropdown li a,
+  .user-dropdown li button {
+    display: block;
+    padding: 8px 16px;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 14px;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  .user-dropdown li a:hover,
+  .user-dropdown li button:hover {
+    background-color: #f4f6f7;
+  }
+  
+  /* Barre de catégories */
+  .navbar-categories {
+    background-color: #f4f6f7;
+    padding: 8px 0;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  
+  .categories-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .navbar-categories ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+  }
+  
+  .navbar-categories a {
+    color: #666;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+  }
+  
+  .navbar-categories a:hover {
+    color: #ff6e14;
+  }
+
+  .post-ad-link {
+    text-decoration: none;
+    color: white;
+  }
+  /* Media Queries */
+  @media (max-width: 1024px) {
+    .navbar-search {
+      max-width: 400px;
+    }
+    
+    .icon-button span {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .navbar-container {
+      flex-wrap: wrap;
+    }
+  
+    .navbar-search {
+      order: 3;
+      max-width: 100%;
+      width: 100%;
+      margin-top: 12px;
+    }
+  
+    .post-ad-button span {
+      display: none;
+    }
+  
+    .categories-container {
+      overflow-x: auto;
+    }
+  }

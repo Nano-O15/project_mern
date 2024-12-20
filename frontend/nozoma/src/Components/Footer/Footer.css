@@ -1,0 +1,123 @@
+.footer {
+    background-color: #f4f6f7;
+    padding: 40px 0 0 0;
+    color: #1a1a1a;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+  
+  .footer-section h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 12px;
+  }
+  
+  .footer-section ul li a {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #ff6e14;
+  }
+  
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .social-link:hover {
+    color: #ff6e14;
+  }
+  
+  .help-section {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .help-section svg {
+    color: #ff6e14;
+  }
+  
+  .footer-bottom {
+    margin-top: 40px;
+    padding: 20px 0;
+    background-color: #fff;
+    border-top: 1px solid #e5e5e5;
+  }
+  
+  .footer-bottom-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .footer-bottom-content a {
+    color: #666;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  .footer-bottom-content a:hover {
+    color: #ff6e14;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 1024px) {
+    .footer-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .footer-container {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+  
+    .footer-bottom-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+    }
+  }

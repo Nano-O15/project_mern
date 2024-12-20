@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import "../Users/EditUsers.css";
 
 const EditUsers = () => {
   const { userId } = useParams();
@@ -11,7 +12,7 @@ const EditUsers = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/users", {
+      .get("http://localhost:8000/users", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
@@ -22,7 +23,7 @@ const EditUsers = () => {
           setName(user.name);
           setEmail(user.email);
         } else {
-          console.error("Utilisateur non trouvée !");
+          console.error("Utilisateur non trouvé !");
         }
       })
       .catch((error) => {
@@ -35,7 +36,7 @@ const EditUsers = () => {
 
     axios
       .put(
-        `http://localhost:8080/user/${userId}`,
+        `http://localhost:8000/user/${userId}`,
         { name, email },
         {
           headers: {
@@ -52,12 +53,12 @@ const EditUsers = () => {
   };
 
   return (
-    <div>
+    <div className="edit-users-container">
       <h1>Modifier l'Utilisateur</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label>
-            Name:
+            Nom:
             <input
               type="text"
               value={name}

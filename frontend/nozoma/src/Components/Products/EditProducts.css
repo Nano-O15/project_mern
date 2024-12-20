@@ -1,0 +1,86 @@
+/* Container */
+.edit-product-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Header */
+.edit-product-container h1 {
+    text-align: center;
+    color: #222;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Form */
+.edit-product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.edit-product-form label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.edit-product-form input,
+.edit-product-form textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.edit-product-form textarea {
+    resize: none;
+    height: 100px;
+}
+
+.edit-product-form input:focus,
+.edit-product-form textarea:focus {
+    border-color: #FF6900;
+    box-shadow: 0 0 5px rgba(255, 105, 0, 0.3);
+    outline: none;
+}
+
+/* Submit Button */
+.edit-product-form button {
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #FF6900;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.edit-product-form button:hover {
+    background-color: #FF8A3D;
+    box-shadow: 0 4px 8px rgba(255, 105, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .edit-product-container {
+        padding: 15px;
+    }
+
+    .edit-product-form button {
+        width: 100%;
+    }
+}

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import DeleteUsers from "./DeleteUsers";
 import { jwtDecode } from "jwt-decode";
+import "./Users.css";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -11,7 +12,6 @@ const Users = () => {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-        console.log("token", token);
         if (token) {
             try {
                 const decodedToken = jwtDecode(token);
@@ -26,7 +26,7 @@ const Users = () => {
 
     useEffect(() => {
         axios
-            .get("http://localhost:8080/users", {
+            .get("http://localhost:8000/users", {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("token"),
                 },
@@ -44,17 +44,17 @@ const Users = () => {
     };
 
     const handleDelete = (userId) => {
-        setUsers(users.filter((users) => users._id !== userId));
+        setUsers(users.filter((user) => user._id !== userId));
     };
 
     return (
-        <div>
+        <div className="users-container">
             <h1>Liste des Utilisateurs</h1>
-            <ul>
+            <ul className="users-list">
                 {users.map((user) => (
                     <li key={user._id}>
-                        <p>{user.name}</p>
-                        <p>{user.email}</p>
+                        <p><strong>Nom :</strong> {user.name}</p>
+                        <p><strong>Email :</strong> {user.email}</p>
                         {userId === user._id && (
                             <>
                                 <button onClick={() => handleUserUpdate(user)}>Modifier</button>
@@ -64,7 +64,12 @@ const Users = () => {
                     </li>
                 ))}
             </ul>
-            <button onClick={() => navigate('/products')}>Voir les Annonces</button>
+            <button
+                className="view-products-button"
+                onClick={() => navigate("/products")}
+            >
+                Voir les Annonces
+            </button>
         </div>
     );
 };
