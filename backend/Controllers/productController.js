@@ -1,16 +1,21 @@
 const Product = require("../Models/productModel");
 
 const CreateProduct = async (req, res) => {
-    const { title, description, price, condition, productType } = req.body;
+    const { title, description, price, condition, productType, imageUrl } = req.body;
 
     if (!title || !description || !price || !condition || !productType) {
-        return res.status(400).send("Merci de remplir tous les champs");
+        return res.status(400).send("Merci de remplir tous les champs obligatoires");
     }
 
     const authorId = req.user.id;
     try {
         const product = new Product({
-            ...req.body,
+            title,
+            description,
+            price,
+            condition,
+            productType,
+            imageUrl: imageUrl || "",
             author: authorId,
         });
 
@@ -60,6 +65,10 @@ const GetByProductId = async (req, res) => {
 
 const UpdateProduct = async (req, res) => {
     try {
+        if (req.body.imageUrl && !isValidUrl(req.body.imageUrl)) {
+            return res.status(400).send({ error: "URL de l'image invalide" });
+        }
+
         const product = await Product.findByIdAndUpdate(
             req.params.productId,
             req.body,
@@ -82,9 +91,18 @@ const DeleteProduct = async (req, res) => {
         if (!product) {
             return res.status(404).send({ error: "Produit introuvable" });
         }
-        res.status(200).send({ message: "Produit supprimée" });
+        res.status(200).send({ message: "Produit supprimé" });
     } catch (error) {
         res.status(500).send({ message: error.message });
+    }
+};
+
+const isValidUrl = (string) => {
+    try {
+        new URL(string);
+        return true;
+    } catch (_) {
+        return false;
     }
 };
 
