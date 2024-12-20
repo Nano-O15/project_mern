@@ -23,6 +23,7 @@ function App() {
           <Route path="/connexion" element={<Login />} />
           <Route path="/users" element={<Users />} />
           <Route path="/user_update/:userId" element={<EditUsers />} />
+          <Route path="/user_products/:userId" element={<UserProducts />} />
           <Route path="/products" element={<Products />} />
           <Route path="/product/:productId" element={<ProductDetails />} />
           <Route path="/product" element={<AddProducts />} />
