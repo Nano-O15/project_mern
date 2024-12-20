@@ -1,0 +1,79 @@
+/* Container */
+.edit-users-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Header */
+.edit-users-container h1 {
+    text-align: center;
+    color: #0056b3;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.edit-users-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Input Fields */
+.edit-users-container input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.edit-users-container input:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+/* Submit Button */
+.edit-users-container button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #0056b3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    align-self: center;
+}
+
+.edit-users-container button:hover {
+    background-color: #007bff;
+    box-shadow: 0 2px 6px rgba(0, 86, 179, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .edit-users-container {
+        padding: 15px;
+    }
+
+    .edit-users-container form {
+        gap: 10px;
+    }
+
+    .edit-users-container input {
+        font-size: 0.9rem;
+    }
+
+    .edit-users-container button {
+        width: 100%;
+    }
+}

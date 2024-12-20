@@ -5,7 +5,7 @@ const DeleteUsers = ({ userId, onDelete }) => {
   const handleDelete = () => {
     if (window.confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?")) {
       axios
-        .delete(`http://localhost:8080/user/${userId}`, {
+        .delete(`http://localhost:8000/user/${userId}`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },

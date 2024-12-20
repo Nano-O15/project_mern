@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./AddProducts.css";
 
 const AddProducts = () => {
     const [title, setTitle] = useState("");
@@ -14,7 +15,7 @@ const AddProducts = () => {
         e.preventDefault();
         axios
             .post(
-                "http://localhost:8080/product",
+                "http://localhost:8000/product",
                 { title, description, price, condition, productType },
                 {
                     headers: {
@@ -22,16 +23,13 @@ const AddProducts = () => {
                     },
                 }
             )
-            .then((response) => {
-                console.log(response.data);
-                navigate("/products");
-            });
+            .then(() => navigate("/products"));
     };
 
     return (
-        <div>
+        <div className="add-product-container">
             <h1>Ajouter une Annonce</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="add-product-form" onSubmit={handleSubmit}>
                 <div>
                     <label>
                         Titre:
@@ -55,7 +53,7 @@ const AddProducts = () => {
                     <label>
                         Prix:
                         <input
-                            type="integer"
+                            type="number"
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
                         />

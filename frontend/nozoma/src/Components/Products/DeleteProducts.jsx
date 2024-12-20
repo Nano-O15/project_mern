@@ -5,7 +5,7 @@ const DeleteProducts = ({ productId, onDelete }) => {
   const handleDelete = () => {
     if (window.confirm("Êtes-vous sûr de vouloir supprimer ce produit ?")) {
       axios
-        .delete(`http://localhost:8080/product/${productId}`, {
+        .delete(`http://localhost:8000/product/${productId}`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },

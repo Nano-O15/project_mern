@@ -1,0 +1,109 @@
+/* Container */
+.users-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Header */
+.users-container h1 {
+    text-align: center;
+    color: #0056b3;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* User List */
+.users-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.users-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: #fff;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* User Details */
+.users-list p {
+    margin: 0;
+    font-size: 1rem;
+    color: #444;
+}
+
+.users-list p strong {
+    color: #0056b3;
+}
+
+/* Buttons */
+.users-list button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #0056b3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.users-list button:hover {
+    background-color: #007bff;
+    box-shadow: 0 2px 6px rgba(0, 86, 179, 0.2);
+}
+
+/* "Voir les Annonces" Button */
+.view-products-button {
+    display: block;
+    width: 100%;
+    margin: 20px auto;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.view-products-button:hover {
+    background-color: #218838;
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .users-container {
+        padding: 15px;
+    }
+
+    .users-list li {
+        flex-direction: column;
+    }
+
+    .users-list button {
+        width: 100%;
+    }
+
+    .view-products-button {
+        width: 100%;
+    }
+}

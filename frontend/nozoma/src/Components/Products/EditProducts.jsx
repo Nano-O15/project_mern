@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import "./EditProducts.css";
 
 const EditProducts = () => {
   const { productId } = useParams();
@@ -14,10 +15,8 @@ const EditProducts = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/products", {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
+      .get("http://localhost:8000/products", {
+        headers: { Authorization: "Bearer " + localStorage.getItem("token") },
       })
       .then((response) => {
         const product = response.data.find((r) => r._id === productId);
@@ -40,26 +39,20 @@ const EditProducts = () => {
     e.preventDefault();
     axios
       .put(
-        `http://localhost:8080/product/${productId}`,
+        `http://localhost:8000/product/${productId}`,
         { title, description, price, condition, productType },
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        }
+        { headers: { Authorization: "Bearer " + localStorage.getItem("token") } }
       )
-      .then((response) => {
-        navigate("/products");
-      })
+      .then(() => navigate("/products"))
       .catch((error) => {
         console.error("Erreur lors de la mise à jour de l'annonce :", error);
       });
   };
 
   return (
-    <div>
+    <div className="edit-product-container">
       <h1>Modifier l'Annonce</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="edit-product-form" onSubmit={handleSubmit}>
         <div>
           <label>
             Titre:
@@ -83,7 +76,7 @@ const EditProducts = () => {
           <label>
             Prix:
             <input
-              type="integer"
+              type="number"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             />
