@@ -8,6 +8,7 @@ import Products from "./Components/Products/Products";
 import AddProducts from "./Components/Products/AddProducts";
 import EditProducts from "./Components/Products/EditProducts";
 import ProductDetails from "./Components/Products/ProductDetails";
+import UserProducts from "./Components/Users/UserProducts";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/users" element={<Users />} />
           <Route path="/user_update/:userId" element={<EditUsers />} />
+          <Route path="/user_products/:userId" element={<UserProducts />} />
           <Route path="/products" element={<Products />} />
           <Route path="/product/:productId" element={<ProductDetails />} />
           <Route path="/product" element={<AddProducts />} />

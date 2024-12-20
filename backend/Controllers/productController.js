@@ -58,6 +58,23 @@ const GetByProductId = async (req, res) => {
     }
 };
 
+const GetByAuthorId = async (req, res) => {
+    try {
+        const { userId } = req.params;
+
+        const products = await Product.find({ author: userId });
+
+        if (!products || products.length === 0) {
+            return res.status(404).json({ message: 'Aucun produit trouvé pour cet auteur.' });
+        }
+
+        res.status(200).json(products);
+    } catch (error) {
+        console.error('Erreur lors de la récupération des produits par authorId:', error);
+        res.status(500).json({ message: 'Erreur serveur.' });
+    }
+};
+
 const UpdateProduct = async (req, res) => {
     try {
         const product = await Product.findByIdAndUpdate(
@@ -88,4 +105,4 @@ const DeleteProduct = async (req, res) => {
     }
 };
 
-module.exports = { CreateProduct, GetProducts, GetByProductId, UpdateProduct, DeleteProduct };
+module.exports = { CreateProduct, GetProducts, GetByProductId, GetByAuthorId, UpdateProduct, DeleteProduct };

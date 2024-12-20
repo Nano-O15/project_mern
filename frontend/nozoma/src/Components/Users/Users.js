@@ -11,7 +11,6 @@ const Users = () => {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-        console.log("token", token);
         if (token) {
             try {
                 const decodedToken = jwtDecode(token);
@@ -39,6 +38,10 @@ const Users = () => {
             });
     }, []);
 
+    const handleUserId = (user) => {
+        navigate(`/user_products/${user._id}`);
+    };
+
     const handleUserUpdate = (user) => {
         navigate(`/user_update/${user._id}`);
     };
@@ -55,6 +58,7 @@ const Users = () => {
                     <li key={user._id}>
                         <p>{user.name}</p>
                         <p>{user.email}</p>
+                        <button onClick={() => handleUserId(user)}>Voir les Annonces</button>
                         {userId === user._id && (
                             <>
                                 <button onClick={() => handleUserUpdate(user)}>Modifier</button>
