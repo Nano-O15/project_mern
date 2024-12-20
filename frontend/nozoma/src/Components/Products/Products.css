@@ -15,25 +15,140 @@
     color: #222;
 }
  
-/* Filter Dropdown */
-.products-container select {
-    display: block;
-    margin: 0 auto 20px auto;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-    max-width: 300px;
-    box-sizing: border-box;
-    background-color: #fff;
-    cursor: pointer;
+/* Filters Container */
+.filters-container {
+    max-width: 1000px;
+    margin: 0 auto 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
  
-.products-container select:focus {
-    outline: none;
+/* Search Section */
+.search-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+ 
+/* Search Bar */
+.search-bar {
+    width: 100%;
+}
+ 
+.search-bar input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+ 
+.search-bar input:focus {
     border-color: #FF6900;
     box-shadow: 0 0 5px rgba(255, 105, 0, 0.3);
+    outline: none;
+}
+ 
+/* Filters */
+.filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    align-items: start;
+}
+ 
+.category-filter {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 45px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 1em;
+}
+ 
+.category-filter:focus {
+    border-color: #FF6900;
+    box-shadow: 0 0 5px rgba(255, 105, 0, 0.3);
+    outline: none;
+}
+ 
+/* Price Filter */
+.price-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 45px;
+}
+ 
+.price-select {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    height: 100%;
+    min-width: 0;
+    background-color: #fff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 1em;
+}
+ 
+.price-select:focus {
+    border-color: #FF6900;
+    box-shadow: 0 0 5px rgba(255, 105, 0, 0.3);
+    outline: none;
+}
+ 
+.price-filter span {
+    color: #666;
+    font-weight: bold;
+    padding: 0 5px;
+    flex-shrink: 0;
+}
+ 
+/* Search Button */
+.search-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #FF6900;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+}
+ 
+.search-button:hover {
+    background-color: #FF8A3D;
+    transform: translateY(-1px);
 }
  
 /* Product List */
@@ -172,6 +287,24 @@
 @media (max-width: 768px) {
     .products-container {
         padding: 15px;
+    }
+ 
+    .filters-container {
+        padding: 15px;
+        gap: 15px;
+    }
+ 
+    .filters {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+ 
+    .price-filter {
+        width: 100%;
+    }
+ 
+    .price-filter input {
+        min-width: 0;
     }
  
     .product-content {

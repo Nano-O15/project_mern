@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import { IoMdContact, IoMdAddCircle, IoMdSearch, IoMdLogOut } from "react-icons/io";
 import { FaHeart, FaRegBell } from "react-icons/fa";
-
+ 
 const Navbar = () => {
   const [author, setAuthor] = useState('');
   const [role, setRole] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
+ 
   useEffect(() => {
     const storedAuthor = localStorage.getItem('author');
     const storedRole = localStorage.getItem('role');
@@ -20,7 +24,7 @@ const Navbar = () => {
       setAuthor(storedAuthor);
     }
   }, []);
-
+ 
   const handleLogout = () => {
     localStorage.removeItem('author');
     localStorage.removeItem('token');
@@ -29,9 +33,23 @@ const Navbar = () => {
     setRole('');
     window.location.href = '/connexion';
   };
-
+ 
+  const handleSearch = (e) => {
+    if (e.key === 'Enter' || e.type === 'click') {
+      if (searchTerm.trim()) {
+        localStorage.setItem('searchTerm', searchTerm);
+        
+        if (location.pathname === '/products') {
+          window.location.reload();
+        } else {
+          navigate('/products');
+        }
+      }
+    }
+  };
+ 
   const formattedRole = role.charAt(0).toUpperCase() + role.slice(1).toLowerCase();
-
+ 
   return (
     <>
       <nav className="navbar">
@@ -50,19 +68,27 @@ const Navbar = () => {
             </button>
             </a>
           </div>
-
+ 
           <div className="navbar-search">
             <div className={`search-container ${isSearchFocused ? 'focused' : ''}`}>
-              <IoMdSearch className="search-icon" size={20} />
+              <IoMdSearch
+                className="search-icon"
+                size={20}
+                onClick={handleSearch}
+                style={{ cursor: 'pointer' }}
+              />
               <input
                 type="text"
                 placeholder="Rechercher des annonces"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyPress={handleSearch}
                 onFocus={() => setIsSearchFocused(true)}
                 onBlur={() => setIsSearchFocused(false)}
               />
             </div>
           </div>
-
+ 
           <div className="navbar-right">
             {!author ? (
               <div className="auth-buttons">
@@ -112,5 +138,5 @@ const Navbar = () => {
     </>
   );
 };
-
+ 
 export default Navbar;
